@@ -1,20 +1,32 @@
-//Write a Java program to create an ArrayList, add all the months of a year and print the same.
+/*it uses CountryCapital  class*/
 
-import java.text.DateFormatSymbols;
-import java.util.ArrayList;
-
+import java.util.*;
 
 public class Exercise1 {
-
+	
 	public static void main(String[] args) {
-		ArrayList<String> alist=new ArrayList<String>();
-		String[] months = new DateFormatSymbols().getMonths();
-		for (int i = 0; i < months.length; i++) 
-		      alist.add(months[i]);
-		for(String month:alist)
-			System.out.println(month);
+		CountryCapital obj=new CountryCapital();
+		obj.saveCountryCapital("India", "New Delhi");
+		obj.saveCountryCapital("Japan", "Tokyo");
+		obj.saveCountryCapital("Australia", "Canberra");
+		obj.saveCountryCapital("New Zealand", "Wellington");
 		
-
+		//Displaying the map M1
+		obj.displayMap();
+		//getting capital name of countries
+		System.out.println("\nThe capital of Australia is "+obj.getCapital("Australia"));
+		System.out.println("The capital of Srilanka is "+obj.getCapital("Srilanka"));
+		//getting country name with passing capital
+		System.out.println("\nWellington is the capital of "+obj.getCountry("Wellington"));
+		
+		
+		//getting the reverse map
+		HashMap<String, String> reverseMap=obj.swapMap();
+		System.out.println("\nReverse map with capitals as keys and countries as value:");
+		for (String key:reverseMap.keySet())
+			System.out.println(key+":"+reverseMap.get(key));
+		
+		
 	}
 
 }
